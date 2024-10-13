@@ -1,0 +1,75 @@
+@import "base.css";
+
+
+section{
+    padding:100px 0;
+    background-color: #000;
+}
+.category,
+.product{
+    width: calc((100% / 3) - 40px);
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    background-color: rgb(170, 170, 170);
+    color: #fff;
+}
+.product img{
+    width: 80%;
+    height: 80%;
+}
+.products h1{
+    color: rgb(204, 164, 113);
+    text-align: center;
+    padding-bottom: 60px;
+    font-weight: bold;
+    font-size: 30px;
+}
+.header .nav-bar{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    justify-content:flex-start;
+    gap: 100px;
+    background-color: rgb(14, 29, 85);
+    border-radius: 2px;
+    position: fixed;
+}
+.nav-bar span{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.nav-bar span span{
+    color: red;
+}
+.nav-bar ul{
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+
+    
+}
+.nav-bar ul li a{
+    text-decoration: none;
+    color: rgb(170, 170, 170);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s linear;
+}
+.nav-bar ul li:first-of-type a{
+    color: rgb(204, 164, 113);
+}
+.nav-bar ul li a:hover{
+    color: rgb(204, 164, 113);
+}
+.active a{
+    font-weight: 900;
+    color: rgb(204, 164, 113);
+}
+

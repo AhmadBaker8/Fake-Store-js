@@ -1,9 +1,4 @@
 
-
-
-
-
-
 const getProducts = async () => {
 
     const params = new URLSearchParams(window.location.search);

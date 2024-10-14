@@ -14,7 +14,7 @@ const displayCategories = async () =>{
         return `
         <div class="category">
             <h2>${element}</h2>
-            <a href="assets/html/category.html?category=${element}">details</a>
+            <a href="./category.html?category=${element}">details</a>
         </div>
         `;
     }).join(" ");

@@ -114,7 +114,7 @@ section{
 
 
 .section4{
-    background: url(/assets/img/img1.webp);
+    background-image: url('./img.png');
     background-attachment: fixed; 
     background-size: cover;
     background-position: center; 

@@ -13,7 +13,9 @@
 a{
     text-decoration: none;
 }
-
+li{
+    list-style: none;
+}
 :root{
     --mainColor:rgb(212, 138, 41);
 }

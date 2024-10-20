@@ -47,6 +47,7 @@ section{
     box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.4);
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 .header .logo{
     display: flex;
@@ -323,4 +324,126 @@ section{
 }
 .page-item.disabled .page-link {
     cursor: not-allowed;
+}
+
+
+
+
+.my-modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.my-modal .modal{
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.my-modal .img-modal{
+    width: 450px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 20px;
+}
+.my-modal img{
+    width: 400px;
+    height: 400px;
+}
+
+.my-modal .desc{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.my-modal .desc h2{
+    font-size: 32px;
+    color: var(--mainColor);
+}
+.my-modal .desc h4{
+    font-size: 22px;
+}
+.my-modal .desc p{
+
+}
+.my-modal .desc .stars i{
+    color: var(--mainColor);
+}
+.my-modal .desc span{
+    font-size: 27px;
+}
+.my-modal .desc span span{
+    font-size: 22px;
+    color: #fff;
+    background-color: red;
+}
+.my-modal .desc a{
+    background-color: rgb(52, 52, 53);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    width: 30%;
+    padding: 20px 0;
+    box-sizing: border-box;
+    min-width: 200px;
+    text-align: center;
+}
+.my-modal .desc a::before{
+    transition: all .5s;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: var(--mainColor);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+.my-modal .desc a:hover::before{
+    height: 100%;
+}
+.backBtn,
+.prevBtn,
+.nextBtn{
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    color: #000;
+    transition: all 0.4s ease;
+}
+.backBtn{
+    top: 10px;
+    right:10px;
+    cursor: pointer;
+    
+}
+.backBtn:hover,
+.prevBtn:hover,
+.nextBtn:hover{
+    transform: scale(1.2);
+}
+.prevBtn{
+    top: 50%;
+    left: 10px;
+}
+.nextBtn{
+    top: 50%;
+    right: 10px;
+}
+.d-none{
+    display: none;
 }

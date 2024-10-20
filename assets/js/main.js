@@ -50,8 +50,15 @@ const displayProducts = async (page = 1) =>{
         const result = data.products.map((element) => {
             return `
             <div class="product">
-                <h2>${element.title}</h2>
-                <img src="${element.thumbnail}"/>
+                <h2 class="title" style="display: none;">${element.title}</h2>
+                <img src="${element.thumbnail}" class="images"/>
+                <h4 class="category" style="display: none;">${element.category}</h4>
+                <p class="description" style="display: none;">${element.description}</p>
+                <span class="price" style="display: none;">${element.price}</span>
+                <span class="discountPercentage" style="display: none;">${element.discountPercentage}</span>
+                <span class="rating" style="display: none;">${element.rating}</span>
+                
+
             </div>
             `;
         }).join(" ");
@@ -83,7 +90,7 @@ const displayProducts = async (page = 1) =>{
     finally{
         loader.classList.remove('active');
     }
-
+    modals();
 }
 displayProducts();
 
@@ -101,9 +108,6 @@ window.onscroll = ()=>{
     }
 
 }
-
-
-
 const countDown = ()=>{
 
     const countDownDate = new Date("2026-01-01T00:00:00").getTime();
@@ -135,3 +139,100 @@ const countDown = ()=>{
     countDown();
   
   },1000);
+
+
+  const modals = ()=>{
+
+    const myModal = document.querySelector('.my-modal');
+    const backBtn = document.querySelector('.backBtn');
+    const prevBtn = document.querySelector('.prevBtn');
+    const nextBtn = document.querySelector('.nextBtn');
+
+    const images = Array.from(document.querySelectorAll('.images'));
+
+    const title = Array.from(document.querySelectorAll('.title'));
+    const price = Array.from(document.querySelectorAll('.price'));
+    const description = Array.from(document.querySelectorAll('.description'));
+
+    const rating = Array.from(document.querySelectorAll('.rating'));
+
+    let currentIndex = 0;
+
+    images.forEach((img) => {
+        img.addEventListener('click',function(e){
+            currentIndex = images.indexOf(img);
+            myModal.classList.remove('d-none');
+            myModal.querySelector('img').setAttribute('src',e.target.src);
+            myModal.querySelector('h2').textContent = title[currentIndex].innerHTML;
+            myModal.querySelector('p').textContent = description[currentIndex].innerHTML;
+            myModal.querySelector('.stars span').textContent = `(${rating[currentIndex].innerHTML})`;
+            myModal.querySelector('.price').textContent = `$${price[currentIndex].innerHTML}`;
+
+            
+        })
+    })
+
+    backBtn.addEventListener('click',function(){
+        myModal.classList.add('d-none');
+    })
+
+    prevBtn.addEventListener('click',function(){
+        currentIndex--;
+        if(currentIndex < 0){
+            currentIndex = images.length -1;
+        }
+        myModal.querySelector('img').setAttribute('src',images[currentIndex].src);
+        myModal.querySelector('h2').textContent = title[currentIndex].innerHTML;
+        myModal.querySelector('p').textContent = description[currentIndex].innerHTML;
+        myModal.querySelector('.stars span').textContent = `(${rating[currentIndex].innerHTML})`;
+        myModal.querySelector('.price').textContent = `$${price[currentIndex].innerHTML}`;
+        
+    })
+
+    nextBtn.addEventListener('click',function(){
+        currentIndex++;
+        if(currentIndex > images.length-1){
+            currentIndex = 0;
+        }
+        myModal.querySelector('img').setAttribute('src',images[currentIndex].src);
+        myModal.querySelector('h2').textContent = title[currentIndex].innerHTML;
+        myModal.querySelector('p').textContent = description[currentIndex].innerHTML;
+        myModal.querySelector('.stars span').textContent = `(${rating[currentIndex].innerHTML})`;
+        myModal.querySelector('.price').textContent = `$${price[currentIndex].innerHTML}`;
+    })
+
+    addEventListener('keydown',function(e){
+        if(e.key=='ArrowRight'){
+            currentIndex++;
+            if(currentIndex > images.length-1){
+                currentIndex = 0;
+            }
+            myModal.querySelector('img').setAttribute('src',images[currentIndex].src);
+            myModal.querySelector('h2').textContent = title[currentIndex].innerHTML;
+            myModal.querySelector('p').textContent = description[currentIndex].innerHTML;
+            myModal.querySelector('.stars span').textContent = `(${rating[currentIndex].innerHTML})`;
+            myModal.querySelector('.price').textContent = `$${price[currentIndex].innerHTML}`;
+        }
+    })
+    addEventListener('keydown',function(e){
+        if(e.key=='ArrowLeft'){
+            currentIndex--;
+            if(currentIndex < 0){
+                currentIndex = images.length -1;
+            }
+            myModal.querySelector('img').setAttribute('src',images[currentIndex].src);
+            myModal.querySelector('h2').textContent = title[currentIndex].innerHTML;
+            myModal.querySelector('p').textContent = description[currentIndex].innerHTML;
+            myModal.querySelector('.stars span').textContent = `(${rating[currentIndex].innerHTML})`;
+            myModal.querySelector('.price').textContent = `$${price[currentIndex].innerHTML}`;
+        }
+    })
+
+    addEventListener('keydown',function(e){
+        if(e.key=='Escape'){
+            myModal.classList.add('d-none');
+        }
+    })
+
+
+  }
